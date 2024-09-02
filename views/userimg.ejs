@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-yellow-500  p-4">
+   
+        <div class="container mx-auto flex justify-between items-center">
+
+            <div class="text-3xl font-bold text-white flex items-center">
+                <i class="fas fa-lightbulb text-white mr-2 hover:text-green-500 transition duration-300"></i>
+                <!-- Thinking icon -->
+                <a href="#" class="hover:text-green-500 transition duration-300">think</a>
+            </div>
+
+
+
+           
+              
+        
+                    <!-- Links and Buttons -->
+                    <div class="hidden md:flex space-x-8 items-center">
+                        <a href="/profile" class="nav-link text-white hover:text-green-500 transition duration-300 font-bold">Home</a>
+                        <a href="/profile" class="nav-link text-white hover:text-green-500 transition duration-300 font-bold">About</a>
+                        <a href="/profile" class="nav-link text-white hover:text-green-500 transition duration-300 font-bold" href="#post">Post</a>
+        
+                        <!-- Logout Dropdown Button -->
+                        <div class="relative">
+                            <img src="/images/uploads/<%= user.profileimg %>" alt="Profile Picture" class="rounded-full object-cover w-10 h-10 cursor-pointer" id="profileImage">
+        
+                            <!-- Dropdown Menu -->
+                            <div id="profileDropdownMenu" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 hidden">
+                                <a href="/userimg" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Profile</a>
+                                <a href="/logout" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Logout</a>
+                            </div>
+                        </div>
+        
+                    </div>
+        
+                    <!-- Hamburger Icon -->
+                    <div class="md:hidden">
+                        <button type="button" class="text-white hover:text-green-500 focus:outline-none focus:text-green-500" aria-label="toggle menu">
+                            <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
+                                <path fill-rule="evenodd" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            
+        </div>
+    </nav>
+
+    <!-- Profile Section with Two Columns -->
+    <section class="container mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- User Info Card -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                <div class="flex items-center space-x-6">
+                    <!-- Profile Picture -->
+                    <div class="w-24 h-24">
+                        <img src="/images/uploads/<%= user.profileimg %>" alt="Profile Picture" class="rounded-full w-full h-full object-cover">
+                    </div>
+                    <!-- User Info -->
+                    <div>
+                        <h1 class="text-2xl font-semibold text-gray-800"><%= user.name %></h1>
+                        <p class="text-gray-600"><%= user.email %></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Profile Form Card -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Edit Profile</h2>
+                <form method="POST" enctype="multipart/form-data" action="userimg">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700">Name</label>
+                        <input type="text" id="name" name="name" value="<%= user.name %>" class="w-full p-2 border border-gray-300 rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" value="<%= user.email %>" class="w-full p-2 border border-gray-300 rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label for="profileimg" class="block text-gray-700">Profile Image</label>
+                        <input type="file" id="profileimg" name="profileimg" class="w-full p-2 border border-gray-300 rounded">
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-300">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+    <style>
+        /* Custom underline animation */
+        .nav-link {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: green;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+     <script>
+        const profileImage = document.getElementById('profileImage');
+        const profileDropdownMenu = document.getElementById('profileDropdownMenu');
+        profileImage.addEventListener('click', () => {
+            profileDropdownMenu.classList.toggle('hidden');
+        });
+
+        const mobileProfileImage = document.getElementById('mobileProfileImage');
+        const mobileProfileDropdownMenu = document.getElementById('mobileProfileDropdownMenu');
+        mobileProfileImage.addEventListener('click', () => {
+            mobileProfileDropdownMenu.classList.toggle('hidden');
+        });
+
+        const menuToggle = document.querySelector('.md:hidden button');
+        const mobileMenu = document.querySelector('.md:hidden + .hidden');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>

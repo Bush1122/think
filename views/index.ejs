@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Navbar</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Custom underline animation */
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 8px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: green; /* Tailwind Blue 500 */
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Navbar -->
+  <nav class="bg-yellow-500 fixed w-full z-10">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <!-- Brand -->
+      <div class="text-3xl font-bold text-white flex items-center">
+        <i class="fas fa-lightbulb text-white mr-2 hover:text-green-500 transition duration-300"></i> <!-- Thinking icon -->
+        <a href="#" class="hover:text-green-500 transition duration-300">think</a>
+      </div>
+      
+      <!-- Links and Buttons -->
+      <div class="hidden md:flex space-x-8 items-center">
+        <a href="#home" class="nav-link text-white hover:text-green-500 transition duration-300 font-bold">Home</a>
+        <a href="#about" class="nav-link text-white hover:text-green-500 transition duration-300 font-bold">About</a>
+        <a href="#post" class="nav-link text-white hover:text-green-500 transition duration-300 font-bold">Post</a>
+       
+        
+        <!-- Login Button -->
+        <a href="/registration" class="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 transition duration-300">Login</a>
+      </div>
+
+      <!-- Hamburger Icon -->
+      <div class="md:hidden">
+        <button id="hamburger-btn" type="button" class="text-white hover:text-green-500 focus:outline-none focus:text-green-500" aria-label="toggle menu">
+          <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
+            <path fill-rule="evenodd" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed inset-0 bg-yellow-500 z-20 hidden">
+    <div class="flex flex-col items-center py-8">
+      <a class="block px-4 py-2 text-white hover:text-green-500" href="#home">Home</a>
+      <a class="block px-4 py-2 text-white hover:text-green-500" href="#about">About</a>
+      <a class="block px-4 py-2 text-white hover:text-green-500" href="#">Post</a>
+      
+      <!-- Mobile Login Button -->
+      <a href="/registration" class="block bg-green-500 text-white font-bold py-2 px-4 text-center rounded hover:bg-green-600 transition duration-300">Login</a>
+    </div>
+  </div>
+
+  <!-- Home Section -->
+  <section id="home" class="min-h-screen bg-white flex items-center justify-center py-12">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="flex flex-col lg:flex-row items-center justify-between">
+        <!-- Left Column (Text) -->
+        <div class="lg:w-1/2 mb-8 lg:mb-0">
+          <h1 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 animate__animated animate__fadeIn animate__delay-1s">
+            Welcome to Our Creative World
+          </h1>
+          <p class="text-lg text-gray-600 mb-6 animate__animated animate__fadeIn animate__delay-2s">
+            Discover the best user experiences and innovative solutions crafted with creativity and passion.
+          </p>
+          <a href="/profile" class="bg-green-500 text-white font-bold py-3 px-6 rounded hover:bg-green-600 transition duration-300 animate__animated animate__fadeIn animate__delay-3s">
+            Get Started <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <!-- Right Column (Image) -->
+        <div class="lg:w-1/2 flex justify-center lg:justify-end">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw7TBZZqcSTODHYgBmmfn1Jh7xdqMj9sI7Pg&s" alt="Creative Work" class="w-full max-w-sm lg:max-w-md animate__animated animate__fadeIn animate__delay-4s">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="min-h-screen bg-gray-100 py-12">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold text-gray-800 mb-6 animate__animated animate__fadeIn animate__delay-1s">About Us</h2>
+      <p class="text-gray-600 text-lg mb-12 animate__animated animate__fadeIn animate__delay-2s">
+        We are a creative agency focused on delivering the best user experiences and bringing ideas to life.
+      </p>
+      <div class="flex flex-wrap justify-center gap-8">
+        <!-- Card 1 -->
+        <div class="bg-white shadow-lg rounded-lg p-6 max-w-sm w-full transform transition-transform duration-300 hover:scale-105 animate__animated animate__fadeIn animate__delay-3s">
+          <i class="fas fa-rocket fa-2x text-green-500 mb-4"></i> <!-- Icon -->
+          <h3 class="text-2xl font-semibold mb-2">Innovation</h3>
+          <p class="text-gray-600">We drive innovation with creative solutions that push the boundaries of technology and design.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-white shadow-lg rounded-lg p-6 max-w-sm w-full transform transition-transform duration-300 hover:scale-105 animate__animated animate__fadeIn animate__delay-4s">
+          <i class="fas fa-users fa-2x text-blue-500 mb-4"></i> <!-- Icon -->
+          <h3 class="text-2xl font-semibold mb-2">Collaboration</h3>
+          <p class="text-gray-600">Our team works collaboratively to ensure every project is completed with the utmost precision and creativity.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-white shadow-lg rounded-lg p-6 max-w-sm w-full transform transition-transform duration-300 hover:scale-105 animate__animated animate__fadeIn animate__delay-5s">
+          <i class="fas fa-lightbulb fa-2x text-yellow-500 mb-4"></i> <!-- Icon -->
+          <h3 class="text-2xl font-semibold mb-2">Creativity</h3>
+          <p class="text-gray-600">We believe in thinking outside the box to deliver unique and creative solutions for our clients.</p>
+        </div>
+        <!-- Card 4 -->
+        <div class="bg-white shadow-lg rounded-lg p-6 max-w-sm w-full transform transition-transform duration-300 hover:scale-105 animate__animated animate__fadeIn animate__delay-6s">
+          <i class="fas fa-cogs fa-2x text-red-500 mb-4"></i> <!-- Icon -->
+          <h3 class="text-2xl font-semibold mb-2">Expertise</h3>
+          <p class="text-gray-600">Our team possesses a wealth of knowledge and expertise to tackle any challenge with confidence and skill.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Section -->
+  <section class="bg-blue-300 py-10"  id="post">
+    <div class="container mx-auto bg-blue-300 rounded-lg p-8">
+      <div class="flex flex-wrap">
+        <div class="w-full">
+          <div class="flex flex-wrap">
+            <!-- Image Section -->
+            <div class="md:w-1/2 w-full">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6DW5L4_7sEsZ8-mlsRT2YiVVqVWY9V8VgkdRaQZ9JtAuDvqtey_6hFh9pPU5WBM2qj9o&usqp=CAU" alt="Community" class="w-full h-auto rounded-lg">
+            </div>
+            <!-- Text Section -->
+            <div class="md:w-1/2 w-full text-center md:text-left p-5">
+              <h2 class="text-3xl font-bold mb-4 text-gray-800">Join Our Community</h2>
+              <p class="text-lg text-gray-600 mb-4">Connect with like-minded individuals and be a part of a vibrant and supportive community. Share your ideas, get inspired, and collaborate on exciting projects.</p>
+              <a href="/registration" class="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 transition duration-300">Get Involved</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-yellow-500 text-white py-6">
+    <div class="container mx-auto text-center">
+      <div class="mb-4">
+        <a href="/" class="text-white text-2xl font-bold">Think</a>
+      </div>
+      <div class="mb-4">
+        <p>&copy; 2024 Think. All rights reserved.</p>
+      </div>
+      <div class="flex justify-center space-x-6">
+        <a href="#" class="hover:text-green-500">About Us</a>
+        <a href="#" class="hover:text-green-500">Privacy Policy</a>
+        <a href="#" class="hover:text-green-500">Terms of Service</a>
+        <a href="#" class="hover:text-green-500">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Hamburger Menu -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const hamburgerBtn = document.getElementById('hamburger-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      hamburgerBtn.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>

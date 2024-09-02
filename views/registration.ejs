@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+  <div class="flex justify-center items-center min-h-screen bg-cover bg-center">
+    <!-- Row with Two Columns -->
+    <div class="flex w-full max-w-4xl">
+      <!-- Image Column -->
+      <div class="hidden md:flex w-1/2 bg-cover bg-center rounded-l-lg" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA3MEn3JYbJcCQ2ARD424twDIoPEKjjJXCE75CXCh2qyRv3hYaPSfhpvquaH3PbQJQtXQ&usqp=CAU');">
+      </div>
+
+     
+      <div class="w-full md:w-1/2 bg-white p-8 rounded-r-lg transform transition-all duration-500">
+        <h2 class="text-3xl font-extrabold text-center text-gray-900 mb-8 animate-fadeInUp">Create Account</h2>
+        <form class="bg-white p-8 rounded-r-lg shadow-lg w-full max-w-md transform transition-all duration-500" method="post" action="/registration">
+     
+       
+       
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+          <div class="relative">
+            <input
+              type="text"
+              id="name"
+              class="w-full pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 animate-inputSlideIn"
+              placeholder="Your Name"
+              required
+              name="name"
+            />
+            <i class="absolute left-3 top-3 text-gray-400 fa fa-user"></i>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="username" class="block text-gray-700 font-medium mb-2">Username</label>
+          <div class="relative">
+            <input
+              type="text"
+              id="username"
+              class="w-full pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 animate-inputSlideIn delay-100"
+              placeholder="Your Username"
+              required
+              name="username"
+            />
+            <i class="absolute left-3 top-3 text-gray-400 fa fa-user-circle"></i>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+          <div class="relative">
+            <input
+              type="email"
+              id="email"
+              class="w-full pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 animate-inputSlideIn delay-200"
+              placeholder="Your Email"
+              required
+              name="email"
+            />
+            <i class="absolute left-3 top-3 text-gray-400 fa fa-envelope"></i>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
+          <div class="relative">
+            <input
+              type="password"
+              id="password"
+              class="w-full pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 animate-inputSlideIn delay-300"
+              placeholder="Your Password"
+              required
+              name="password"
+            />
+            <i class="absolute left-3 top-3 text-gray-400 fa fa-lock"></i>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 transform transition-transform duration-300 hover:scale-105 animate-fadeInUp delay-400"
+        >
+          <i class="fa fa-sign-in-alt mr-2"></i> Create Account
+        </button>
+
+        <p class="text-center text-gray-600 mt-6 animate-fadeInUp delay-500">
+          Already have an account?
+          <a href="/login" class="text-green-500 hover:text-green-600 font-medium">Login</a>
+        </p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  
+  <style>
+    
+    .delay-100 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
+
+    .delay-400 {
+      animation-delay: 0.4s;
+    }
+
+    .delay-500 {
+      animation-delay: 0.5s;
+    }
+  </style>
+</body>
+</html>

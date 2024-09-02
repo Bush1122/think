@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Navbar</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom underline animation */
+        .nav-link {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: green;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-yellow-500 fixed w-full z-10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Brand -->
+            <div class="text-3xl font-bold text-white flex items-center">
+                <i class="fas fa-lightbulb text-white mr-2 hover:text-green-500 transition duration-300"></i>
+                <!-- Thinking icon -->
+                <a href="#" class="hover:text-green-500 transition duration-300">think</a>
+            </div>
+
+            <!-- Links and Buttons -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="nav-link text-white hover:text-green-500 transition duration-300 font-bold">Home</a>
+                <a href="#about" class="nav-link text-white hover:text-green-500 transition duration-300 font-bold">About</a>
+                <a href="#post" class="nav-link text-white hover:text-green-500 transition duration-300 font-bold" href="#post">Post</a>
+
+                <!-- Logout Dropdown Button -->
+                <div class="relative">
+                    <img src="/images/uploads/<%= user.profileimg %>" alt="Profile Picture" class="rounded-full object-cover w-10 h-10 cursor-pointer" id="profileImage">
+
+                    <!-- Dropdown Menu -->
+                    <div id="profileDropdownMenu" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 hidden">
+                        <a href="/userimg" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Profile</a>
+                        <a href="/logout" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Logout</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Hamburger Icon -->
+            <div class="md:hidden">
+                <button type="button" class="text-white hover:text-green-500 focus:outline-none focus:text-green-500" aria-label="toggle menu">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
+                        <path fill-rule="evenodd" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="hidden md:hidden bg-yellow-500 shadow-md">
+        <a class="block px-4 py-2 text-white hover:text-green-500" href="#home">Home</a>
+        <a class="block px-4 py-2 text-white hover:text-green-500" href="#about">About</a>
+        <a class="block px-4 py-2 text-white hover:text-green-500" href="#post">Post</a>
+
+        <!-- Profile Image and Dropdown Button -->
+        <div class="relative">
+            <img src="your-profile-image-url.jpg" alt="Profile" class="w-10 h-10 rounded-full cursor-pointer" id="mobileProfileImage">
+
+            <!-- Dropdown Menu -->
+            <div id="mobileProfileDropdownMenu" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 hidden">
+                <a href="/userimg" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Profile</a>
+                <a href="/logout" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen bg-white flex items-center justify-center py-12">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                <!-- Left Column (Text) -->
+                <div class="lg:w-1/2 mb-8 lg:mb-0">
+                    <h1 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 animate__animated animate__fadeIn animate__delay-1s">
+                        Welcome to Our <span class="text-blue-500 "><%= user.name %></span> Creative World
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-6 animate__animated animate__fadeIn animate__delay-2s">
+                        Discover the best user experiences and innovative solutions crafted with creativity and passion.
+                    </p>
+
+                    <a href="/profile" class="bg-green-500 text-white font-bold py-3 px-6 rounded hover:bg-green-600 transition duration-300 animate__animated animate__fadeIn animate__delay-3s">
+                        Get Started <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                </div>
+                <!-- Right Column (Image) -->
+                <div class="lg:w-1/2 flex justify-center lg:justify-end">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw7TBZZqcSTODHYgBmmfn1Jh7xdqMj9sI7Pg&s" alt="Creative Work" class="w-full max-w-sm lg:max-w-md animate__animated animate__fadeIn animate__delay-4s">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="min-h-screen bg-gray-100 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6 animate__animated animate__fadeIn animate__delay-1s">About Us</h2>
+            <p class="text-gray-600 text-lg mb-12 animate__animated animate__fadeIn animate__delay-2s">
+                We are a creative agency focused on delivering the best user experiences and bringing ideas to life.
+            </p>
+            <div class="flex flex-wrap justify-center gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white shadow-lg rounded-lg p-6 max-w-sm w-full transform transition-transform duration-300 hover:scale-105 animate__animated animate__fadeIn animate__delay-3s">
+                    <i class="fas fa-rocket fa-2x text-green-500 mb-4"></i> <!-- Icon -->
+                    <h3 class="text-2xl font-semibold mb-2">Innovation</h3>
+                    <p class="text-gray-600">We drive innovation with creative solutions that push the boundaries of technology and design.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white shadow-lg rounded-lg p-6 max-w-sm w-full transform transition-transform duration-300 hover:scale-105 animate__animated animate__fadeIn animate__delay-4s">
+                    <i class="fas fa-users fa-2x text-blue-500 mb-4"></i> <!-- Icon -->
+                    <h3 class="text-2xl font-semibold mb-2">Collaboration</h3>
+                    <p class="text-gray-600">Our team works collaboratively to ensure every project is completed with the utmost precision and creativity.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white shadow-lg rounded-lg p-6 max-w-sm w-full transform transition-transform duration-300 hover:scale-105 animate__animated animate__fadeIn animate__delay-5s">
+                    <i class="fas fa-lightbulb fa-2x text-yellow-500 mb-4"></i> <!-- Icon -->
+                    <h3 class="text-2xl font-semibold mb-2">Creativity</h3>
+                    <p class="text-gray-600">We believe in thinking outside the box to deliver unique and creative solutions for our clients.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white shadow-lg rounded-lg p-6 max-w-sm w-full transform transition-transform duration-300 hover:scale-105 animate__animated animate__fadeIn animate__delay-6s">
+                    <i class="fas fa-cogs fa-2x text-red-500 mb-4"></i> <!-- Icon -->
+                    <h3 class="text-2xl font-semibold mb-2">Technology</h3>
+                    <p class="text-gray-600">We use cutting-edge technology to deliver solutions that are both innovative and effective.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Post Section -->
+ 
+      <section id="post" class="min-h-screen bg-blue-500 flex items-center justify-center p-4">
+        <div class="container mx-auto text-center">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 text-white">
+            <span class="text-red-400"><%= user.name %></span> You can create a post here
+          </h1> 
+          <form class="max-w-lg mx-auto flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-2" action="post" method="post">
+            <textarea 
+              class="w-full text-lg sm:text-xl md:text-2xl resize-none bg-transparent border-2 border-white rounded-lg text-center text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent shadow-lg transition-transform transform" 
+              name="content" 
+              placeholder="What’s on your mind"
+              style="height: 60px;"></textarea>
+            <input 
+              class="h-12 sm:h-14 w-full md:w-24 px-4 py-2 text-lg sm:text-xl md:text-2xl bg-white text-blue-500 rounded-lg shadow-lg hover:bg-blue-100 transition-transform transform hover:scale-105" 
+              type="submit" 
+              value="Post">
+          </form>
+          <div class="posts mt-10 sm:mt-20">
+            <h3 class="text-white text-xl sm:text-2xl mb-4 sm:mb-6">Your Post</h3>
+            <div class="post-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+      
+              <% if (user.posts && user.posts.length > 0 ) { %>
+      
+              <% user.posts.forEach(function(post){ %>
+                <div class="post p-5 border-2 border-blue-500 rounded-md text-white bg-blue-400">
+                  <h4 class="text-left mb-2 px-3"> <%= user.name %> </h4>
+                  <p class="text-left text-sm px-3" name="content"><%= post.content %></p>
+      
+                  <div class="btns flex justify-between mt-6 px-3">
+                    <a class="flex items-center text-red-500">
+                      <i class="fas fa-heart mr-2"><%= post.likes.length %></i> <!-- Like Icon -->
+                    </a>
+      
+                    <form action="/likes/<%= post._id %>" method="POST">
+                      <button type="submit" class="flex items-center text-red-500">
+                        <% if (post.likes.indexOf(user._id) === -1) { %>
+                          <i class="far fa-heart mr-2"></i> <!-- Unliked Icon -->
+                        <% } else { %>
+                          <i class="fas fa-heart mr-2"></i> <!-- Liked Icon -->
+                        <% } %>
+                        <%= post.likes.indexOf(user._id) === -1 ? "Like" : "Unlike" %>
+                      </button>
+                    </form>
+      
+                    <a href="/edit/<%= post._id %>" class="flex items-center text-white-700">
+                      <i class="fas fa-edit mr-2"></i> <!-- Edit Icon -->
+                      Edit
+                    </a>
+                  </div>
+                </div>
+              <% }) %>
+      
+              <% } else { %>
+                <p class="text-white">No posts found.</p>
+              <% } %>
+      
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="bg-yellow-500 text-white py-6">
+        <div class="container mx-auto text-center">
+          <div class="mb-4">
+            <a href="/" class="text-white text-2xl font-bold">Think</a>
+          </div>
+          <div class="mb-4">
+            <p>&copy; 2024 Think. All rights reserved.</p>
+          </div>
+          <div class="flex justify-center space-x-6">
+            <a href="#" class="hover:text-green-500">About Us</a>
+            <a href="#" class="hover:text-green-500">Privacy Policy</a>
+            <a href="#" class="hover:text-green-500">Terms of Service</a>
+            <a href="#" class="hover:text-green-500">Contact Us</a>
+          </div>
+        </div>
+      </footer>
+      
+   
+
+    <!-- JavaScript for dropdowns and menu toggle -->
+    <script>
+        const profileImage = document.getElementById('profileImage');
+        const profileDropdownMenu = document.getElementById('profileDropdownMenu');
+        profileImage.addEventListener('click', () => {
+            profileDropdownMenu.classList.toggle('hidden');
+        });
+
+        const mobileProfileImage = document.getElementById('mobileProfileImage');
+        const mobileProfileDropdownMenu = document.getElementById('mobileProfileDropdownMenu');
+        mobileProfileImage.addEventListener('click', () => {
+            mobileProfileDropdownMenu.classList.toggle('hidden');
+        });
+
+        const menuToggle = document.querySelector('.md:hidden button');
+        const mobileMenu = document.querySelector('.md:hidden + .hidden');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>
